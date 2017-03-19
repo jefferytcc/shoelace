@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
 
       if @user.save
-        
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
 
@@ -73,6 +73,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password,  :password_confirmation)
+      params.require(:user).permit(:username, :email, :password,  :password_confirmation)
     end
 end

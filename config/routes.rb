@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
 
-  get 'static_pages/help'
+  resources :shoes
+	#homepage
+  root 'shoes#index'
 
+  #user sign in
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
+
+  #user sign-up and etc
   resources :users
 
 
