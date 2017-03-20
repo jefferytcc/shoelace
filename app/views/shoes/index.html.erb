@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
-        <p class="lead">Welcome, <b><%= current_user.username if !current_user.nil? %></b>
-
-    <p id="notice"><%= notice %></p>
-    <div class="col-md-2">
-      <div class="list-group">
-        <%= link_to "All Shoes", shoes_path, class: "list-group-item"%>
-        <% Category.all.order(:content).each do |c| %>
-        <%= link_to c.content, root_path(category_id: c.id), class: "list-group-item", remote: true %>
-        <% end %>
-      </div>
-      </div><!-- col-md-2-->
-      <div id="shoes-index">
+    <p class="lead">Welcome, <b><%= current_user.username if !current_user.nil? %></b>
+      <p id="notice"><%= notice %></p>
+      <div class="col-md-2">
+        <div class="list-group">
+          <%= link_to "All Shoes", shoes_path, class: "list-group-item"%>
+          <% Category.all.order(:content).each do |c| %>
+          <%= link_to c.content, root_path(category_id: c.id), class: "list-group-item", remote: true %>
+          <% end %>
+        </div>
+        </div><!-- col-md-2-->
+        <div id="shoes-index">
+          
+          <%= render "shoes_index", locals: { shoes: @shoes } %>
+        </div>
         
-        <%= render "shoes_index", locals: { shoes: @shoes } %>
       </div>
-      
+      <%= paginate @shoes %>
     </div>
-  </div>

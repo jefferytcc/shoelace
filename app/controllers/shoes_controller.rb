@@ -13,6 +13,7 @@ end
       format.js
       format.html
     end
+    @shoes = Shoe.order(:name).page params[:page]
   end
 
   # GET /shoes/1

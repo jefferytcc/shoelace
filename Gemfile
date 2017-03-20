@@ -61,3 +61,4 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'kaminari'
