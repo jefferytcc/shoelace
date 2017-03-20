@@ -14,3 +14,26 @@
  *= require_self
  */
 
+.caption {
+    height: 160px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 360px;
+    height: 257px;
+}
+
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
