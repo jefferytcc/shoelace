@@ -1,39 +1,34 @@
 <p id="notice"><%= notice %></p>
-
-
+<% if  @shoe.photos.nil? %>
+<%= image_tag(@shoe.photos[0])%>
+<%end%>
 <p>
   <strong>Owned by:</strong>
   <%= @shoe.user.username %>
 </p>
-
 <p>
   <strong>Brand:</strong>
   <%= @shoe.brand %>
 </p>
-
 <p>
   <strong>Shoe size:</strong>
   <%= @shoe.shoe_size %>
 </p>
-
 <p>
   <strong>Price:</strong>
   <%= @shoe.price.to_i %>
 </p>
-
 <p>
   <strong>Description:</strong>
   <%= @shoe.description %>
 </p>
-
 <p>
-<strong>Category:</strong>
+  <strong>Category:</strong>
   <% @shoe.categories.each do |category| %>
-    <%= category.content %>
+  <%= category.content %>
   <% end %>
 </p>
-
-  <% if logged_in? and current_user.id == @shoe.user_id %>
+<% if logged_in? and current_user.id == @shoe.user_id %>
 <%= link_to 'Edit', edit_shoe_path(@shoe) %> |
 <%= link_to 'Back', shoes_path %>
 <% end %>

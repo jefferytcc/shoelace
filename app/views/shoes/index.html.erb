@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
+
+
     <p class="lead">Welcome, <b><%= current_user.username if !current_user.nil? %></b>
       <p id="notice"><%= notice %></p>
+
+
       <div class="col-md-2">
         <div class="list-group">
           <%= link_to "All Shoes", shoes_path, class: "list-group-item"%>
@@ -10,11 +14,14 @@
           <% end %>
         </div>
         </div><!-- col-md-2-->
+
+        <div class="col-md-10">
         <div id="shoes-index">
           
           <%= render "shoes_index", locals: { shoes: @shoes } %>
         </div>
-        
+        </div>
+
       </div>
-      <%= paginate @shoes %>
+      <center><%= paginate @shoes %></center>
     </div>

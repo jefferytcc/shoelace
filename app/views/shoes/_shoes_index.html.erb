@@ -1,8 +1,11 @@
 <% @shoes.each do |shoe| %>
-  <div class="col-md-4">
+  <div class="col-md-6">
 
     
         <div class="caption">
+        <% if shoe.photos? %>
+        <%= image_tag(shoe.photos[0]) %>
+        <%end%>
         <h5><b>Name: </b><%= link_to shoe.name, shoe_path(shoe.id) %></h5>
           <h5><b>Brand: </b><%= link_to shoe.brand, shoe_path(shoe.id) %></h5>
           <h5 class="subheader"><b>RM </b><%= shoe.price.to_i %></h5>

@@ -19,10 +19,17 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user)%></li>
+                  <li>
+                <%= link_to current_user do %>
+                <%= content_tag :span, "My Listing" %>
+                <%= content_tag :span, "#{current_user.shoes.count}", class: "badge" %>
+                <% end %>
+              </li>
               <li class="divider"></li>
               <li>
                 <%= link_to "Log out", logout_path, :method=>'delete' %>
               </li>
+             
             </ul>
           </li>
         <% else %>
@@ -43,3 +50,4 @@
     </nav>
   </div>
 </header>
+

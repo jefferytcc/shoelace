@@ -1,26 +1,35 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @user.username %>
-</p
-
+</p>
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-
 <p>
   <strong>Password digest:</strong>
   <%= @user.password_digest %>
 </p>
-
 <p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <strong>My Listing Shoe:</strong>
+  <% @user.shoes.each do |shoe| %><br>
+  <div class="caption">
+    <% if shoe.photos? %>
+    <%=image_tag(shoe.photos[0]) %>
+    <%end%>
+    <h5><b>Name: </b><%= link_to shoe.name, shoe_path(shoe.id) %></h5>
+    <h5><b>Brand: </b><%= link_to shoe.brand, shoe_path(shoe.id) %></h5>
+    <h5 class="subheader"><b>RM </b><%= shoe.price.to_i %></h5>
+    <h5 class="subheader"><b>Description: </b><%= shoe.description %>
+    <h5 class="subheader"><b>Owned by: </b><%= shoe.user.username %>
+    <%end%>
+  </p>
+  <% if current_user.try(:admin?) %>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>
+  <%end%>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
