@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170319012146) do
   end
 
   create_table "shoes", force: :cascade do |t|
+    t.string   "name"
     t.string   "brand"
     t.integer  "shoe_size"
     t.float    "price"
@@ -52,7 +53,6 @@ ActiveRecord::Schema.define(version: 20170319012146) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"

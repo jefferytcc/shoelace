@@ -78,6 +78,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shoe_params
-      params.require(:shoe).permit(:brand, :shoe_size, :price, :description, category_ids:[])
+      params.require(:shoe).permit(:name, :brand, :shoe_size, :price, :description, category_ids:[])
     end
 end

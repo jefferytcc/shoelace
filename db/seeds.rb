@@ -5,3 +5,44 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Seed Users
+user = {}
+user['password'] = 'asdf'
+user['password_confirmation'] = 'asdf'
+
+ActiveRecord::Base.transaction do
+  20.times do 
+    user['first_name'] = Faker::Name.first_name 
+    user['last_name'] = Faker::Name.last_name
+    user['email'] = Faker::Internet.email
+    user['gender'] = rand(1..2)
+    user['phone_num'] = Faker::PhoneNumber.phone_number
+    user['city'] = Faker::Address.city
+    
+
+    User.create(user)
+  end
+end 
+
+# Seed Listings
+shoe = {}
+uids = []
+User.all.each { |u| uids << u.id }
+
+ActiveRecord::Base.transaction do
+  40.times do 
+    shoe['name'] = Faker::App.name
+
+    shoe['brand'] = ["Nike", "Adidas", "Puma", "Under Armour", "Reebok", "Converse", "Vans", "Onitsuka Tiger", "New Balance"].sample
+
+    shoe['shoe_size'] = rand(7..14)
+
+    shoe['price'] = rand(80..500)
+    shoe['description'] = Faker::Hipster.sentence
+
+    shoe['user_id'] = uids.sample
+
+    Shoe.create(shoe)
+  end
+end
