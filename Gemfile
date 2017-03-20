@@ -53,12 +53,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# protecting privacy
 gem 'figaro'
 
+# uploading image
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 # facebook login
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# pagination
 gem 'kaminari'

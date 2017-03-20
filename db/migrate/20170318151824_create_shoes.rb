@@ -5,8 +5,10 @@ class CreateShoes < ActiveRecord::Migration[5.0]
       t.string :brand
       t.integer :shoe_size
       t.float :price
+      t.json :photos
       t.text :description
       t.belongs_to :user
+
       t.timestamps
     end
   end

@@ -36,6 +36,14 @@
 <%= f.collection_check_boxes :category_ids, Category.all, :id, :content %><br>
 </div>
 
+<div class="form-group ">
+<%= f.label :photos %><br>
+<%= f.file_field :photos, multiple: true %><br>
+
+ <%= f.check_box :remove_photos %>
+    Remove Photos<br>
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

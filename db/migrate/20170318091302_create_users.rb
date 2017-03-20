@@ -9,7 +9,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :gender
       t.integer :phone_num
+      t.string :image
       t.integer :role
+
       t.timestamps
     end
   end

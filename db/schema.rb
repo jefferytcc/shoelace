@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170319012146) do
     t.string   "brand"
     t.integer  "shoe_size"
     t.float    "price"
+    t.json     "photos"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170319012146) do
     t.string   "city"
     t.string   "gender"
     t.integer  "phone_num"
+    t.string   "image"
     t.integer  "role"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
