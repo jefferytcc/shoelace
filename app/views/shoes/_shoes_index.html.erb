@@ -6,6 +6,7 @@
           <h5><b>Brand: </b><%= link_to shoe.brand, shoe_path(shoe.id) %></h5>
           <h5 class="subheader"><b>RM </b><%= shoe.price.to_i %></h5>
           <h5 class="subheader"><b>Description: </b><%= shoe.description %>
+          <h5 class="subheader"><b>Owned by: </b><%= shoe.user.username %>
     </div>  
   </div> <!-- col-md-4 -->
 <%end%>

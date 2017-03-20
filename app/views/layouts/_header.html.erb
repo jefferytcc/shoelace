@@ -4,7 +4,7 @@
     <nav>
 <ul class="nav navbar-nav navbar-left">
 
-     <li><%= link_to "sample app", root_path, id: "logo" %></li>
+     <li><%= link_to "SHOE LACE", root_path %></li>
      </ul>
       <ul class="nav navbar-nav navbar-right">
 
@@ -27,6 +27,7 @@
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
         <% end %>
 
         <% if current_user.try(:admin?) %>
