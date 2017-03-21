@@ -6,4 +6,16 @@ class Shoe < ApplicationRecord
 	attr_accessor :photos
   mount_uploaders :photos, ImageUploader
 
+  include PgSearch
+
+ 	pg_search_scope :search_full_text,
+ 		:using => {
+ 		:tsearch => {:any_word => true }
+ 	},
+
+		:against => {
+			:brand => 'A',
+			:name => 'B'
+		}
+
 end

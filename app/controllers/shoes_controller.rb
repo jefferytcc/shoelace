@@ -3,19 +3,21 @@ class ShoesController < ApplicationController
   # GET /shoes
   # GET /shoes.json
   def index
-  if params[:category_id]
-    @shoes = Category.find(params[:category_id]).shoes.page params[:page]
-    else
-    @shoes = Shoe.all.order(:brand).page params[:page]
 
-  end
+    if params[:query].present?
+      @shoes = Shoe.search_full_text(params[:query])
+    elsif params[:category_id]
       respond_to do |format|
       format.js
       format.html
-
     end
-
+      @shoes = Category.find(params[:category_id]).shoes.page params[:page]
+    else
+      @shoes = Shoe.all.order(:brand).page params[:page]
+    end
   end
+
+
 
   # GET /shoes/1
   # GET /shoes/1.json

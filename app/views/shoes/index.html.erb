@@ -5,7 +5,9 @@
     <p class="lead">Welcome, <b><%= current_user.username if !current_user.nil? %></b>
       <p id="notice"><%= notice %></p>
 
+  
 
+       
       <div class="col-md-2">
         <div class="list-group">
           <%= link_to "All Shoes", shoes_path, class: "list-group-item"%>
@@ -17,7 +19,9 @@
 
         <div class="col-md-10">
         <div id="shoes-index">
-
+      <% if @shoes.blank?%>
+        <h3> Sorry, there's no <%= params[:query] %> shoe's found!</h3>
+        <%end%>
           <%= render "shoes_index", locals: { shoes: @shoes } %>
 
         </div>

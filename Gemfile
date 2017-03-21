@@ -66,3 +66,6 @@ gem 'omniauth-facebook'
 
 # pagination
 gem 'kaminari'
+
+# search function
+gem 'pg_search'
