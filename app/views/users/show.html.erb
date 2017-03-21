@@ -11,7 +11,7 @@
 <p>
   <strong>My Listing Shoe:</strong>
   <% @user.shoes.each do |shoe| %><br>
-  <div class="caption">
+
     <% if shoe.photos? %>
     <%=image_tag(shoe.photos[0]) %>
     <%end%>
@@ -28,5 +28,3 @@
     <%= @user.role %>
   </p>
   <%end%>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>

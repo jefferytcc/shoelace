@@ -32,3 +32,8 @@
 <%= link_to 'Edit', edit_shoe_path(@shoe) %> |
 <%= link_to 'Back', shoes_path %>
 <% end %>
+
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_shoe_path(@shoe) %> |
+<%= link_to 'Back', shoes_path %>
+<% end %>

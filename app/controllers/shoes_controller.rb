@@ -1,13 +1,12 @@
 class ShoesController < ApplicationController
   before_action :set_shoe, only: [:show, :edit, :update, :destroy]
-
   # GET /shoes
   # GET /shoes.json
   def index
   if params[:category_id]
     @shoes = Category.find(params[:category_id]).shoes.page params[:page]
     else
-    @shoes = Shoe.all.order(:name).page params[:page]
+    @shoes = Shoe.all.order(:brand).page params[:page]
 
   end
       respond_to do |format|
@@ -31,6 +30,11 @@ class ShoesController < ApplicationController
 
   # GET /shoes/1/edit
   def edit
+    unless current_user.try(:admin?)
+      unless logged_in? and current_user.id == @shoe.user_id
+        redirect_to root_path, :alert => "Access denied."
+      end
+    end
   end
 
   # POST /shoes
@@ -68,7 +72,7 @@ class ShoesController < ApplicationController
   def destroy
     @shoe.destroy
     respond_to do |format|
-      format.html { redirect_to shoes_url, notice: 'Shoe was successfully destroyed.' }
+      format.html { redirect_to shoes_url, notice: 'Shoe was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -83,4 +87,5 @@ class ShoesController < ApplicationController
     def shoe_params
       params.require(:shoe).permit(:name, :brand, :shoe_size, :price, :description, category_ids:[], photos:[])
     end
+
 end

@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
   <div class="field">
     <%= f.label :brand %>
     <%= f.text_field :brand %>
@@ -42,6 +48,10 @@
 
  <%= f.check_box :remove_photos %>
     Remove Photos<br>
+</div>
+
+<div class="form-group ">
+<button><%= link_to 'Delete Listing', shoe, method: :delete, data: {confirm: 'Are you sure you want to delete this shoe?' } %></button>
 </div>
 
   <div class="actions">

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin_only, :except => [:create, :show, :new, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -30,14 +30,12 @@ class UsersController < ApplicationController
 
       if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the ShoeLace!"
       redirect_to @user
 
       else
      
         render :new 
-
-
     end
   end
 
@@ -74,5 +72,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :email, :password,  :password_confirmation)
+    end
+
+    def admin_only
+      unless current_user.try(:admin?)
+        redirect_to root_path, :alert => "Access denied."
+      end
     end
 end
