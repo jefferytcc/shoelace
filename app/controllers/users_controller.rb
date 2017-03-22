@@ -20,6 +20,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  unless current_user.try(:admin?)
+      unless logged_in? and current_user.id == @user.id
+        flash[:danger] = "Access denied."
+        redirect_to root_path
+      end
+    end
   end
 
   # POST /users
@@ -76,7 +82,8 @@ class UsersController < ApplicationController
 
     def admin_only
       unless current_user.try(:admin?)
-        redirect_to root_path, :alert => "Access denied."
+        flash[:danger] = "Access denied."
+        redirect_to root_path
       end
     end
 end

@@ -69,3 +69,8 @@ gem 'kaminari'
 
 # search function
 gem 'pg_search'
+
+gem 'braintree'
+
+gem 'redis'
+gem 'hiredis'

@@ -28,6 +28,15 @@
   <%= category.content %>
   <% end %>
 </p>
+
+<p>
+<% if logged_in? %>
+  <strong><%=link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@shoe), removeUrl: remove_from_cart_path(@shoe)} do%></strong>
+    <i class="fi-shopping-cart"></i>
+    <span><%=@cart_action%></span> Cart
+  <%end%>
+<%end%>
+</p>
 <% if logged_in? and current_user.id == @shoe.user_id %>
 <%= link_to 'Edit', edit_shoe_path(@shoe) %> |
 <%= link_to 'Back', shoes_path %>

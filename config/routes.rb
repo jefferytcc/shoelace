@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 
+  #create show and etc
   resources :shoes
+  
 	#homepage
   root 'shoes#index'
 
@@ -14,6 +16,11 @@ Rails.application.routes.draw do
   #user sign-up and etc
   resources :users
 
+  #user add to cart
+  resource :cart, only: [:show] do
+    put 'add/:shoe_id', to: 'carts#add', as: :add_to
+    put 'remove/:shoe_id', to: 'carts#remove', as: :remove_from
+  end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

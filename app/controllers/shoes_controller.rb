@@ -23,6 +23,7 @@ class ShoesController < ApplicationController
   # GET /shoes/1.json
   def show
     @shoe = Shoe.find(params[:id])
+    @cart_action = @shoe.cart_action current_user.try :id
   end
 
   # GET /shoes/new

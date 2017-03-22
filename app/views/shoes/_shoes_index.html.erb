@@ -1,28 +1,20 @@
-
 <% @shoes.each do |shoe| %>
-
-  <div class="col-md-5">
-
-          <div class="thumbnail">
-        <% if shoe.photos? %>
-        <%= image_tag(shoe.photos[0]) %>
-        <%end%>
-         <div class="caption">
-        <h5><b>Name: </b><%= link_to shoe.name, shoe_path(shoe.id) %></h5>
-          <h5><b>Brand: </b><%= link_to shoe.brand, shoe_path(shoe.id) %></h5>
-          <h5 class="subheader"><b>RM </b><%= shoe.price.to_i %></h5>
-          <h5 class="subheader"><b>Description: </b><%= shoe.description %>
-          <h5 class="subheader"><b>Owned by: </b><%= shoe.user.username %>
-
-    </div>  
-
- </div>
-
-  </div> <!-- col-md-4 -->
-
-  <%end%>
-   <div class="col-md-12 col-md-offset-4">
-
-</div>
-   
+<div class="col-md-5">
+  <div class="thumbnail">
+    <% if shoe.photos? %>
+    <%= image_tag(shoe.photos[0]) %>
+    <%end%>
+    <div class="caption">
+      <h5><b>Name: </b><%= link_to shoe.name, shoe_path(shoe.id) %></h5>
+      <h5><b>Brand: </b><%= link_to shoe.brand, shoe_path(shoe.id) %></h5>
+      <h5 class="subheader"><b>RM </b><%= shoe.price.to_i %></h5>
+      <h5 class="subheader"><b>Description: </b><%= shoe.description %>
+      <h5 class="subheader"><b>Owned by: </b><%= shoe.user.username %>
     </div>
+  </div>
+  </div> <!-- col-md-4 -->
+  <%end%>
+  <div class="col-md-12 col-md-offset-4">
+  </div>
+  
+</div>

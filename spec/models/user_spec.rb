@@ -45,5 +45,7 @@ it "email addresses should be saved as lower-case" do
 	 subject.save!
 	expect(subject.email).to eq("jared@hot.com")
 end
+
+
 end
 

@@ -1,0 +1,28 @@
+<div id="mycart">
+<div class="container">
+
+    <h4>My Cart</h4>
+    <p class="mb0"> You've selected <span class="cart-count"><%=current_user.cart_count%></span> shoes!</p>
+  </div>
+
+  <% @cart_shoes.each do |shoe|%>
+ <p>
+    <strong><%=image_tag shoe.photos[0] %></strong>
+    </p>
+
+    <p>
+  <strong>Brand:</strong>
+  <%= shoe.brand %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= shoe.description %>
+</p>
+
+  <%=link_to "" , data: {targetUrl: remove_from_cart_path(shoe)} do%>
+        <i class="fi-x right">clear</i>
+<% end %>
+
+      <%end%>
+      </div>  </div>
