@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
-      user = User.create!(username: auth_hash["username"], email: auth_hash["extra"]["raw_info"]["email"], password: auth_hash)
+      user = User.create!(username: auth_hash[:info]["name"], email: auth_hash["extra"]["raw_info"]["email"], password: auth_hash[:info]["password"])
       user.authentications << (authentication)      
       return user
   end

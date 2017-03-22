@@ -7,7 +7,9 @@
 
   <% @cart_shoes.each do |shoe|%>
  <p>
+ <% if shoe.photos.nil? %>
     <strong><%=image_tag shoe.photos[0] %></strong>
+    <%end%>
     </p>
 
     <p>

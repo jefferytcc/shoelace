@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
- before_action :logged_in?
+  
+
+
   def show
     cart_ids = $redis.smembers current_user_cart
     @cart_shoes = Shoe.find(cart_ids)
@@ -17,8 +19,16 @@ class CartsController < ApplicationController
 
   private
 
+
+
   def current_user_cart
+
+        unless logged_in?
+      flash[:danger] = "Access denied."
+       redirect_to root_path
+     else 
     "cart#{current_user.id}"
+    end
   end
 
 end
