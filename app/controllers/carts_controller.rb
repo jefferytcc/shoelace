@@ -9,12 +9,12 @@ class CartsController < ApplicationController
 
   def add
     $redis.sadd current_user_cart, params[:shoe_id]
-    render json: current_user.cart_count, status: 200
+    render json: current_user.cart_count
   end
 
   def remove
     $redis.srem current_user_cart, params[:shoe_id]
-    render json: current_user.cart_count, status: 200
+    render json: current_user.cart_count
   end
 
   private
