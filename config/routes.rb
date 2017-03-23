@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     put 'add/:shoe_id', to: 'carts#add', as: :add_to
     put 'remove/:shoe_id', to: 'carts#remove', as: :remove_from
   end
-
+  
+## Braintree payments
+  # Payment Info
 resources :transactions, only: [:new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
