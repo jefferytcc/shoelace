@@ -5,7 +5,7 @@ class ShoesController < ApplicationController
   def index
 
     if params[:query].present?
-      @shoes = Shoe.search_full_text(params[:query])
+      @shoes = Shoe.search_full_text(params[:query]).page params[:page]
     elsif params[:category_id]
       respond_to do |format|
       format.js

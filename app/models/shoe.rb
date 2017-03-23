@@ -3,6 +3,9 @@ class Shoe < ApplicationRecord
 	has_many :shoe_categories
 	has_many :categories, through: :shoe_categories
 
+	has_many :purchases
+	has_many :buyers, through: :purchases
+
 	attr_accessor :photos
   mount_uploaders :photos, ImageUploader
 

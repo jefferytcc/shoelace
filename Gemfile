@@ -81,3 +81,5 @@ gem 'braintree'
 
 gem 'redis'
 gem 'hiredis'
+
+gem 'gon'

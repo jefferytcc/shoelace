@@ -47,3 +47,4 @@ ActiveRecord::Base.transaction do
     Shoe.create(shoe)
   end
 end
+

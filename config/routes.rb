@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  
+
   #create show and etc
   resources :shoes
   
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
     put 'remove/:shoe_id', to: 'carts#remove', as: :remove_from
   end
 
+resources :transactions, only: [:new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
