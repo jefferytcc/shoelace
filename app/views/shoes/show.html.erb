@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
+
+<p>
+ <strong> <b><%= (current_user && current_user.purchase?(@shoe)) ? "Recently Purchased" : "" %></b></strong>
+</p>
+
 <% if  @shoe.photos.nil? %>
 <%= image_tag(@shoe.photos[0])%>
 <%end%>
