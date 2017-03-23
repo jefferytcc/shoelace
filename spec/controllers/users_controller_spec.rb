@@ -59,7 +59,65 @@ RSpec.describe UsersController, type: :controller do
   end
 
 
+ describe "GET #edit" do
+    before do
+      session[:user_id] = user.id
+      get :edit, {:id => user.to_param}
+    end
 
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the edit template" do
+      expect(response).to render_template("edit")
+    end
+
+  end
+describe "PUT #update" do
+  # happy_path
+    context "with valid update params" do
+      it "updates the requested user" do
+        user = user1
+        put :update, {:id => user.to_param, :user => valid_params_update}
+        user.reload
+        expect( user.email ).to eq valid_params_update[:email]
+      end
+
+      it 'redirects to user path and displays flash notice after user profile is updated successfully' do
+
+        put :update, {:id => user.to_param, :user => valid_params_update}
+        user.reload
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:success]).to eq "Account is updated successfully."
+      end
+    end
+# unhappy_path
+    context "with invalid update params" do
+      it "re-renders the 'edit' template" do
+        put :update, {:id => user.to_param, :user => invalid_params_update}
+        expect(response).to render_template("edit")
+         expect(flash[:danger]).to eq "Unprocessable Entity."
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+
+    it "destroys the requested user" do
+      user = user1
+      expect {
+        delete :destroy, {:id => user.to_param}
+      }.to change(User, :count).by(-1)
+    end
+
+    it "redirects to the statuses_path" do
+      user = user1
+      delete :destroy, {:id => user.to_param}
+      expect(response).to redirect_to(shoes_path)
+      expect(flash[:notice]).to eq "Account is deleted"
+    end
+  end
 
 
 end
