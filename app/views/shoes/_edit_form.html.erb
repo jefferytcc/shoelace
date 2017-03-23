@@ -50,6 +50,10 @@
     Remove Photos<br>
 </div>
 
+<div class="form-group ">
+<button><%= link_to 'Delete Listing', shoe, method: :delete, data: {confirm: 'Are you sure you want to delete this shoe?' } %></button>
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
