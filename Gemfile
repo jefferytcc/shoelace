@@ -40,6 +40,13 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem "rspec-given"
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
