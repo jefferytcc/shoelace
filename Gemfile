@@ -92,3 +92,5 @@ group :production do
       # Use Puma as the app server
       gem 'puma', '~> 3.0'
 end
+
+gem 'rails-controller-testing', :git => 'git://github.com/rails/rails-controller-testing.git'

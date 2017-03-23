@@ -1,5 +1,10 @@
 class Shoe < ApplicationRecord
-	
+
+	validates :name, presence: true
+	validates :brand, presence: true
+	validates :price, presence: true
+	validates :description, length: { minimum:10, message: "description is too short" }
+
 	belongs_to :user
 	
 	has_many :shoe_categories

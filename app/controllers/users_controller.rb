@@ -41,8 +41,8 @@ class UsersController < ApplicationController
       redirect_to @user
 
       else
-     
-        render :new 
+     flash[:danger] = "Error creating account"
+     render :new 
     end
   end
 
