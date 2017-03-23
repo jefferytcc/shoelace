@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-
+                    
   validates :password_digest, length: { minimum: 6 }
 
 
@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   has_many :purchases, foreign_key: :buyer_id
   has_many :shoes
+ 
 
  	enum role: [:admin, :user]
   after_initialize :set_default_role, :if => :new_record?
