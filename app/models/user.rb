@@ -8,7 +8,6 @@ class User < ApplicationRecord
   validates :password_digest, length: { minimum: 6 }
 
 
-	has_many :shoes
 	has_secure_password
   has_many :authentications, :dependent => :destroy
 
