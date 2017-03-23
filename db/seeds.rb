@@ -8,8 +8,8 @@
 
 # Seed Users
 user = {}
-user['password'] = 'asdf'
-user['password_confirmation'] = 'asdf'
+user['password'] = '123456'
+user['password_confirmation'] = '123456'
 
 ActiveRecord::Base.transaction do
   20.times do 
