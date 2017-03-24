@@ -1,5 +1,6 @@
 class ShoesController < ApplicationController
-  before_action :set_shoe, only: [:show, :edit, :update, :destroy, :all_shoe]
+  before_action :set_shoe, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, :except => [:create, :show, :new, :edit, :update, :destroy]
   # GET /shoes
   # GET /shoes.json
   def index
@@ -78,12 +79,6 @@ class ShoesController < ApplicationController
     end
   end
 
-
-  def all_shoe
-      @shoes = Shoe.all
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shoe
@@ -93,6 +88,13 @@ class ShoesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shoe_params
       params.require(:shoe).permit(:name, :brand, :shoe_size, :price, :description, category_ids:[], photos:[])
+    end
+    
+   def admin_only
+      unless current_user.try(:admin?)
+        flash[:danger] = "Access denied."
+        redirect_to root_path
+      end
     end
 
 end

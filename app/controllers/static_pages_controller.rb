@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 	  before_action :set_shoe, only: [:show, :edit, :update, :destroy, :all_shoe]
 
   def home
+
   	 if params[:query].present?
       @shoes = Shoe.search_full_text(params[:query]).page params[:page]
     elsif params[:category_id]
@@ -15,6 +16,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
+
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_shoe
@@ -25,4 +27,6 @@ class StaticPagesController < ApplicationController
     def shoe_params
       params.require(:shoe).permit(:name, :brand, :shoe_size, :price, :description, category_ids:[], photos:[])
     end
+
+    
 end
