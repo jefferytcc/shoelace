@@ -1,7 +1,11 @@
 FactoryGirl.define do
   factory :purchase do
-    shoe_id 1
-user_id 1
+  	shoe
+
+  	factory :purchase_with_user do
+  		  	user
+  	end
+
   end
 
 end
