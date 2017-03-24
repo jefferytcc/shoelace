@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   #create show and etc
   resources :shoes
-  
+
+
 	#homepage
-  root 'shoes#index'
+  root 'static_pages#home'
 
   #user sign in
   get    '/login',   to: 'sessions#new'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   #user sign-up and etc
-  resources :users
+  resources :users 
 
   #user add to cart
   resource :cart, only: [:show] do

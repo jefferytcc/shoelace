@@ -1,5 +1,5 @@
 class ShoesController < ApplicationController
-  before_action :set_shoe, only: [:show, :edit, :update, :destroy]
+  before_action :set_shoe, only: [:show, :edit, :update, :destroy, :all_shoe]
   # GET /shoes
   # GET /shoes.json
   def index
@@ -13,7 +13,7 @@ class ShoesController < ApplicationController
     end
       @shoes = Category.find(params[:category_id]).shoes.page params[:page]
     else
-      @shoes = Shoe.all.order(:brand).page params[:page]
+      @shoes = Shoe.all.page params[:page]
     end
   end
 
@@ -77,6 +77,12 @@ class ShoesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def all_shoe
+      @shoes = Shoe.all
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

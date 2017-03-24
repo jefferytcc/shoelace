@@ -1,2 +1,33 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="container">
+  <div class="row">
+
+
+    <p class="lead"><b><%= "Welcome, " + current_user.username if !current_user.nil? %></b>
+      <p id="notice"><%= notice %></p>
+
+  
+
+       
+      <div class="col-md-2">
+        <div class="list-group">
+          <%= link_to "All Shoes", root_path, class: "list-group-item"%>
+          <% Category.all.order(:content).each do |c| %>
+          <%= link_to c.content, root_path(category_id: c.id), class: "list-group-item", remote: true %>
+          <% end %>
+        </div>
+        </div><!-- col-md-2-->
+
+        <div class="col-md-10">
+        <div id="shoes-home">
+        <% if @shoes.blank?%>
+        <h3> Sorry, there's no <%= params[:query] %> shoe's found!</h3>
+        <%end%>
+          <%= render "shoes_home", locals: { shoes: @shoes } %>
+
+        </div>
+    
+      </div>
+
+    </div>
+     
+  </div>
