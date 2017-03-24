@@ -13,8 +13,8 @@ class User < ApplicationRecord
 	has_secure_password
   has_many :authentications, :dependent => :destroy
 
-  has_many :purchases, foreign_key: :buyer_id
-  has_many :shoes
+  has_many :purchases, foreign_key: :buyer_id, :dependent => :destroy
+  has_many :shoes, :dependent => :destroy
  
 
  	enum role: [:admin, :user]

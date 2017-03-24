@@ -45,30 +45,28 @@ class ShoesController < ApplicationController
   def create
     @shoe = current_user.shoes.new(shoe_params)
 
-    respond_to do |format|
       if @shoe.save
-        format.html { redirect_to @shoe, notice: 'Shoe was successfully created.' }
-        format.json { render :show, status: :created, location: @shoe }
+         flash[:notice] = "Shoe was successfully created."
+         redirect_to @shoe
       else
-        format.html { render :new }
-        format.json { render json: @shoe.errors, status: :unprocessable_entity }
+        flash[:danger] = "Shoe was not successfully created."
+        render new
       end
     end
-  end
+  
 
   # PATCH/PUT /shoes/1
   # PATCH/PUT /shoes/1.json
   def update
-    respond_to do |format|
       if @shoe.update(shoe_params)
-        format.html { redirect_to @shoe, notice: 'Shoe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shoe }
+        flash[:notice] = "Shoe was successfully updated."
+        redirect_to @shoe
       else
-        format.html { render :edit }
-        format.json { render json: @shoe.errors, status: :unprocessable_entity }
+        flash[:danger] = "Shoe was not successfully updated."
+        render :edit
       end
     end
-  end
+  
 
   # DELETE /shoes/1
   # DELETE /shoes/1.json
